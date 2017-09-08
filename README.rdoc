@@ -1,15 +1,19 @@
-== README
+This is my React-on_Rails Practise Project
+------------------------------------------
 
-This README would normally document whatever steps are necessary to get the
+It is a single page rails application using the react on rails gem to inject react code.
+
+
+This part of the README documents what steps are necessary to get the
 application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version : 2.2.1p85
 
-* System dependencies
+* PostGres DB
 
-* Configuration
+* 
 
 * Database creation
 
@@ -21,8 +25,3 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
