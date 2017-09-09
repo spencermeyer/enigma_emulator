@@ -1,0 +1,19 @@
+.display-board{
+  background-color: grey;
+}
+.key-button{
+  display: inline-block;
+  float:left;
+  width: 6vw;
+  height: 6vw;
+  border-radius: 3vw;
+  margin-left: 1vw;
+}
+.key-button.A, .key-button.P{
+  clear: left;
+}
+.key-button.A{
+  margin-left: 4vw;
+}
+
+

@@ -4,6 +4,8 @@ This is my React-on_Rails Practise Project
 It is a single page rails application using the react on rails gem to inject react code.
 
 
+
+
 This part of the README documents what steps are necessary to get the
 application up and running.
 
