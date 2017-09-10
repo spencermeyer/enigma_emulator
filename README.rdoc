@@ -27,3 +27,22 @@ Things you may want to cover:
 
 * Deployment instructions
 
+
+
+//    here is an idead for changing colour    
+//    https://stackoverflow.com/questions/40535444/how-to-use-onclick-with-divs-in-react-js
+
+
+do some mapping
+
+{ console.log('before map', this.handleClick()) }
+{ 
+  this.props.letters.map((individualLetter, index) => {
+    console.log('in map', individualLetter, index, that.handleClick(individualLetter));
+    return <KeyBoardButton letter={individualLetter} key={index} onClick={ that.handleClick } awooga={ 'hhhhhhhh'} anoterhprosp={ 'fiddles' } />
+  },)
+}
+
+
+
+

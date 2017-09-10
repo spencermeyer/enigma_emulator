@@ -1,11 +1,11 @@
 class Machine extends React.Component {
   render() {
+    const boardLetters = ['Q','W','E','R','T','Z','U','I','O','A','S','D','F','G','H','J','K','P','Y','X','C','V','B','N','M','L'];
     return (
       <div>
-        <h1>{this.props.title}</h1>
         <Rotor letter="b" />
-        <DisplayBoard />
-        <KeyBoard />
+        <DisplayBoard letters={boardLetters} />
+        <KeyBoard letters={boardLetters} />
       </div>
     )   
   }
@@ -21,44 +21,50 @@ class Rotor extends React.Component{
 
 class DisplayBoard extends React.Component{
   render() {
-    const displayBoardLetters = ['Q','W','E','R','T','Z','U','I','O','A','S','D','F','G','H','J','K','P','Y','X','C','V','B','N','M','L'];
     return(
         <div className="display-board">
-          { displayBoardLetters.map(function(individualLetter){
-            return <DisplayBoardLetter letter={individualLetter} />
+          { this.props.letters.map(function(individualLetter, index){
+            return <DisplayBoardLetter key={index} letter={individualLetter} />
           }) }
         </div>
       );
   }
 }
 
-const DisplayBoardLetter = React.createClass({
-  render: function(){
+class DisplayBoardLetter extends React.Component{
+  render(){
     return (
         <div className="lamp-board-letter">
-          <button type="button" className={"key-button" + " " + this.props.letter}>{ this.props.letter }</button>
+          <button type="button" className={"lamp-button" + " " + this.props.letter}>{ this.props.letter }</button>
         </div>
       )
   }
-})
+}
 
-const KeyBoard = React.createClass({
-  render: function(){
+class KeyBoard extends React.Component{
+  render() {
     return (
       <div className = 'keyboard'>
+        <KeyBoardButton letter='f' key='1' onSomeEvent={ this.handleClick.bind(this) }  awooga='single' />
       </div>
-      )
+    )
   }
-})
+  handleClick(value) { console.log('if only . .. . .', value.target.value); }
+}
 
-const KeyBoardButton = React.createClass({
-  render: function(){
+class KeyBoardButton extends React.Component{
+  xhandleClick() { console.log('hello', this) }
+  componentWillMount() { this.setState({letter: this.props.letter})  }
+  render() {
+    console.log('this letter', this.props.letter);
+    console.log('this value', this.state.value);
+    var that=this;
     return (
         <div className="key-board-letter">
-
+          <button type="button" value={this.state.letter} onClick={this.props.onSomeEvent } className={"key-button" + " " + this.props.letter} >{ this.props.letter }</button>
         </div>
-      )
+    )
   }
-})
+}
 
-// try this    eslint app/assets/javascritps/components/machine.jsx
+
