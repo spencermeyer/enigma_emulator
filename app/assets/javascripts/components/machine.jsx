@@ -10,7 +10,14 @@ class Machine extends React.Component {
       </div>
     )   
   }
-  handleKeySelected(value) { console.log('machine level', value) }
+  handleKeySelected(value) { 
+    console.log('machine level', value);
+    $.ajax({
+      url: "/encrypt_key",
+      data: { input_key: value },
+      success: function(data) { console.log('SUCCESS', data) }
+    });
+   }
 }
 
 class RotorAssembly extends React.Component {

@@ -3,8 +3,7 @@ This is my React-on_Rails Practise Project
 
 It is a single page rails application using the react on rails gem to inject react code.
 
-
-
+This is my ReactJS project in which I am writing an enigma machine emulator.  There is a ruby back-end for doing the code stuff, the font end sends it the selected key.
 
 This part of the README documents what steps are necessary to get the
 application up and running.
@@ -33,15 +32,7 @@ Things you may want to cover:
 //    https://stackoverflow.com/questions/40535444/how-to-use-onclick-with-divs-in-react-js
 
 
-do some mapping
 
-{ console.log('before map', this.handleClick()) }
-{ 
-  this.props.letters.map((individualLetter, index) => {
-    console.log('in map', individualLetter, index, that.handleClick(individualLetter));
-    return <KeyBoardButton letter={individualLetter} key={index} onClick={ that.handleClick } awooga={ 'hhhhhhhh'} anoterhprosp={ 'fiddles' } />
-  },)
-}
 
 
 
