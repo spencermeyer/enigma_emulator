@@ -3,7 +3,7 @@ class Machine extends React.Component {
     const boardLetters = ['Q','W','E','R','T','Z','U','I','O','A','S','D','F','G','H','J','K','P','Y','X','C','V','B','N','M','L'];
     return (
       <div>
-        <Rotor letter="b" />
+        <RotorAssembly letter="b" />
         <DisplayBoard letters={boardLetters} />
         <KeyBoard letters={boardLetters} />
       </div>
@@ -11,10 +11,24 @@ class Machine extends React.Component {
   }
 }
 
+class RotorAssembly extends React.Component {
+  render() {
+    return(
+      <div className='rotor-assembly'>
+        <Rotor letter={"H"} />
+        <Rotor letter={"Z"} />
+        <Rotor letter={"P"} />
+      </div>
+      );
+  }
+}
+
 class Rotor extends React.Component{
   render() {
     return(
-      <p>RotorX letter {this.props.letter} </p>
+      <div className="oval">
+        <p className="rotor-letter">{this.props.letter}</p>
+      </div>
     );
   }  
 };
@@ -53,11 +67,8 @@ class KeyBoard extends React.Component{
 }
 
 class KeyBoardButton extends React.Component{
-  xhandleClick() { console.log('hello', this) }
   componentWillMount() { this.setState({letter: this.props.letter})  }
   render() {
-    console.log('this letter', this.props.letter);
-    console.log('this value', this.state.value);
     var that=this;
     return (
         <div className="key-board-letter">

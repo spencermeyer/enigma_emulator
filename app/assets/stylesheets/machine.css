@@ -28,4 +28,26 @@
 .key-button.A{
   margin-left: 4vw;
 }
+.rotor-assembly{
+  margin-left: 20vw;
+  margin-bottom: 2vw;
+  width: 50%;
+}
+.oval {
+  width: 8vw;
+  height: 24vw;
+  border-radius: 4vw/12vw;
+  background-color: silver;
+  display: inline-block;
+  margin-left: 1vw;
+}
+.rotor-letter{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10vw;
+  border-style: solid;
+  border-width: 0.5vw;
+  border-color: lightgrey;
+  text-align: center;
+}
 
