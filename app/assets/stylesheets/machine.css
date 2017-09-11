@@ -1,5 +1,10 @@
+.machine{
+  background-color: #404040;
+  height: 70vw;
+  width: 65vw;
+}
 .display-board{
-  background-color: grey;
+/*  background-color: grey;*/
   margin-bottom: 25vw;
 }
 .lamp-button, .key-button{
@@ -20,7 +25,7 @@
   clear: left;
 }
 .key-button{
-  color: red;
+  color: white;
 }
 .key-button.A, .key-button.P{
   clear: left;

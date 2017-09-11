@@ -1,14 +1,16 @@
 class Machine extends React.Component {
   render() {
     const boardLetters = ['Q','W','E','R','T','Z','U','I','O','A','S','D','F','G','H','J','K','P','Y','X','C','V','B','N','M','L'];
+
     return (
-      <div>
+      <div className="machine">
         <RotorAssembly letter="b" />
         <DisplayBoard letters={boardLetters} />
-        <KeyBoard letters={boardLetters} />
+        <KeyBoard letters={boardLetters} onKeyPressed={ this.handleKeySelected.bind(this) }/>
       </div>
     )   
   }
+  handleKeySelected(value) { console.log('machine level', value) }
 }
 
 class RotorAssembly extends React.Component {
@@ -59,11 +61,15 @@ class KeyBoard extends React.Component{
   render() {
     return (
       <div className = 'keyboard'>
-        <KeyBoardButton letter='f' key='1' onSomeEvent={ this.handleClick.bind(this) }  awooga='single' />
+        { 
+          this.props.letters.map(
+            (individualLetter, index) =>{ return <KeyBoardButton letter={ individualLetter } key={index} onSomeEvent={ this.handleClick.bind(this) } /> })
+        }
+
       </div>
     )
   }
-  handleClick(value) { console.log('if only . .. . .', value.target.value); }
+  handleClick(value) { console.log('if only . .. . .', value.target.value); this.props.onKeyPressed(value.target.value); }
 }
 
 class KeyBoardButton extends React.Component{
