@@ -1,6 +1,6 @@
 var Machine = React.createClass({
   getInitialState() {
-    return { key_selected: '' }
+    return { returned_key: '' }
   },
   render() {
     const boardLetters = ['Q','W','E','R','T','Z','U','I','O','A','S','D','F','G','H','J','K','P','Y','X','C','V','B','N','M','L'];
@@ -8,7 +8,7 @@ var Machine = React.createClass({
     return (
       <div className="machine">
         <RotorAssembly letter="b" />
-        <DisplayBoard letters={boardLetters} />
+        <DisplayBoard letters={boardLetters} key_to_light = { this.state.returned_key } />
         <KeyBoard letters={boardLetters} onKeyPressed={ this.handleKeySelected }/>
         <PlugBoard />
       </div>
@@ -28,7 +28,7 @@ var Machine = React.createClass({
   },
   ajaxSuccess(key) {
     console.log('OK new function', key);
-    this.setState({ key_selected: key }); //not working
+    this.setState({ returned_key: key });
   }
 })
 
@@ -55,24 +55,42 @@ var Rotor = React.createClass({
 });
 
 var DisplayBoard = React.createClass({
+  getInitialState() {
+    return { key_to_light: '' }
+  },
   render() {
     return(
         <div className="display-board">
           { this.props.letters.map(function(individualLetter, index){
-            return <DisplayBoardLetter key={index} letter={individualLetter} />
-          }) }
+            return <DisplayBoardLetter key={index} letter={individualLetter} key_to_light={this.props.key_to_light} />
+          }, this)}
         </div>
       );
   }
 });
 
 var DisplayBoardLetter = React.createClass({
+  getInitialState() {
+    return { key_has_been_lit: false }
+  },
   render(){
+    const classNames = (this.props.key_to_light == this.props.letter && !this.state.key_has_been_lit) ? 'lamp-button lit' : 'lamp-button';
     return (
-        <div className="lamp-board-letter">
-          <button type="button" className={"lamp-button" + " " + this.props.letter}>{ this.props.letter }</button>
+        <div className='lamp-board-letter'>
+          <button type="button" className={ classNames + " " + this.props.letter}>{ this.props.letter }</button>
         </div>
       )
+  },
+  componentDidUpdate(prevProps, prevState) {
+    console.log('DisplayBoard letter component did update');
+    if(this.props.key_to_light == this.props.letter) { 
+      console.log('Im spartacus', this.props.letter);
+      setTimeout(function(){
+        if(!this.state.key_has_been_lit) {
+          this.setState({key_has_been_lit: true});
+        }
+      }.bind(this), 950);
+    }
   }
 });
 
@@ -84,12 +102,10 @@ var KeyBoard = React.createClass({
           this.props.letters.map(
             (individualLetter, index) =>{ return <KeyBoardButton letter={ individualLetter } key={index} onSomeEvent={ this.handleClick } /> })
         }
-
       </div>
     )
   },
   handleClick(value) {
-    console.log('if only . .. . .', value.target.value);
     this.props.onKeyPressed(value.target.value );
   }
 });
@@ -106,12 +122,11 @@ var KeyBoardButton = React.createClass({
   }
 });
 
-class PlugBoard extends React.Component{
+var PlugBoard = React.createClass({
     render() {
       return(
         <div className="plug-board">
         </div>
         )
     }
-}
-
+});

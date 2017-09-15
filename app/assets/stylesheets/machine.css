@@ -24,6 +24,9 @@
 .lamp-button.A{
   margin-left: 4vw;
 }
+.lamp-button.lit{
+  background-color: white;
+}
 .keyboard{
   clear: left;
 }
