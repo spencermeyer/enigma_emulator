@@ -1,12 +1,7 @@
-class Machine extends React.Component {
-//  React.createClass(object)  this will only work with ES6
-  constructor(props) {
-    super(props);
-    this.state = { key_selected: ' ' }
-  }
+var Machine = React.createClass({
   getInitialState() {
     return { key_selected: '' }
-  }
+  },
   render() {
     const boardLetters = ['Q','W','E','R','T','Z','U','I','O','A','S','D','F','G','H','J','K','P','Y','X','C','V','B','N','M','L'];
 
@@ -14,11 +9,11 @@ class Machine extends React.Component {
       <div className="machine">
         <RotorAssembly letter="b" />
         <DisplayBoard letters={boardLetters} />
-        <KeyBoard letters={boardLetters} onKeyPressed={ this.handleKeySelected.bind(this) }/>
+        <KeyBoard letters={boardLetters} onKeyPressed={ this.handleKeySelected }/>
         <PlugBoard />
       </div>
     )   
-  }
+  },
   handleKeySelected(value) {
     var ajaxSuccess = this.ajaxSuccess;
     console.log('machine level', value);
@@ -30,12 +25,12 @@ class Machine extends React.Component {
         ajaxSuccess(data.letter);
       }
     });
-  }
+  },
   ajaxSuccess(key) {
     console.log('OK new function', key);
-    // this.setState({ key_selected: key }); not working
+    this.setState({ key_selected: key }); //not working
   }
-}
+})
 
 class RotorAssembly extends React.Component {
   render() {
@@ -49,7 +44,7 @@ class RotorAssembly extends React.Component {
   }
 }
 
-class Rotor extends React.Component{
+var Rotor = React.createClass({
   render() {
     return(
       <div className="oval">
@@ -57,9 +52,9 @@ class Rotor extends React.Component{
       </div>
     );
   }  
-};
+});
 
-class DisplayBoard extends React.Component{
+var DisplayBoard = React.createClass({
   render() {
     return(
         <div className="display-board">
@@ -69,9 +64,9 @@ class DisplayBoard extends React.Component{
         </div>
       );
   }
-}
+});
 
-class DisplayBoardLetter extends React.Component{
+var DisplayBoardLetter = React.createClass({
   render(){
     return (
         <div className="lamp-board-letter">
@@ -79,25 +74,28 @@ class DisplayBoardLetter extends React.Component{
         </div>
       )
   }
-}
+});
 
-class KeyBoard extends React.Component{
+var KeyBoard = React.createClass({
   render() {
     return (
       <div className = 'keyboard'>
         { 
           this.props.letters.map(
-            (individualLetter, index) =>{ return <KeyBoardButton letter={ individualLetter } key={index} onSomeEvent={ this.handleClick.bind(this) } /> })
+            (individualLetter, index) =>{ return <KeyBoardButton letter={ individualLetter } key={index} onSomeEvent={ this.handleClick } /> })
         }
 
       </div>
     )
+  },
+  handleClick(value) {
+    console.log('if only . .. . .', value.target.value);
+    this.props.onKeyPressed(value.target.value );
   }
-  handleClick(value) { console.log('if only . .. . .', value.target.value); this.props.onKeyPressed(value.target.value ); }
-}
+});
 
-class KeyBoardButton extends React.Component{
-  componentWillMount() { this.setState({letter: this.props.letter})  }
+var KeyBoardButton = React.createClass({
+  componentWillMount() { this.setState({letter: this.props.letter})  },
   render() {
     var that=this;
     return (
@@ -106,7 +104,7 @@ class KeyBoardButton extends React.Component{
         </div>
     )
   }
-}
+});
 
 class PlugBoard extends React.Component{
     render() {
