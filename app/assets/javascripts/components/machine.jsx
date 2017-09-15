@@ -1,4 +1,12 @@
 class Machine extends React.Component {
+//  React.createClass(object)  this will only work with ES6
+  constructor(props) {
+    super(props);
+    this.state = { key_selected: ' ' }
+  }
+  getInitialState() {
+    return { key_selected: '' }
+  }
   render() {
     const boardLetters = ['Q','W','E','R','T','Z','U','I','O','A','S','D','F','G','H','J','K','P','Y','X','C','V','B','N','M','L'];
 
@@ -7,17 +15,26 @@ class Machine extends React.Component {
         <RotorAssembly letter="b" />
         <DisplayBoard letters={boardLetters} />
         <KeyBoard letters={boardLetters} onKeyPressed={ this.handleKeySelected.bind(this) }/>
+        <PlugBoard />
       </div>
     )   
   }
-  handleKeySelected(value) { 
+  handleKeySelected(value) {
+    var ajaxSuccess = this.ajaxSuccess;
     console.log('machine level', value);
     $.ajax({
       url: "/encrypt_key",
       data: { input_key: value },
-      success: function(data) { console.log('SUCCESS', data) }
+      success: function(data) { 
+        console.log('SUCCESS', data.letter);
+        ajaxSuccess(data.letter);
+      }
     });
-   }
+  }
+  ajaxSuccess(key) {
+    console.log('OK new function', key);
+    // this.setState({ key_selected: key }); not working
+  }
 }
 
 class RotorAssembly extends React.Component {
@@ -76,7 +93,7 @@ class KeyBoard extends React.Component{
       </div>
     )
   }
-  handleClick(value) { console.log('if only . .. . .', value.target.value); this.props.onKeyPressed(value.target.value); }
+  handleClick(value) { console.log('if only . .. . .', value.target.value); this.props.onKeyPressed(value.target.value ); }
 }
 
 class KeyBoardButton extends React.Component{
@@ -91,4 +108,12 @@ class KeyBoardButton extends React.Component{
   }
 }
 
+class PlugBoard extends React.Component{
+    render() {
+      return(
+        <div className="plug-board">
+        </div>
+        )
+    }
+}
 

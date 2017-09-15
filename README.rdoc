@@ -26,13 +26,36 @@ Things you may want to cover:
 
 * Deployment instructions
 
+Using this react js:
+--------------------
+https://github.com/reactjs/react-rails
+
+Tutorial
+--------
+https://hackhands.com/react-rails-tutorial/
+
+must use some of these:
+-----------------------
+https://github.com/brillout/awesome-react-components
+
+Useful sources of information:
+------------------------------
+http://www.dcode.fr/enigma-machine-cipher#0
+https://en.wikipedia.org/wiki/Enigma_rotor_details
+https://www.theguardian.com/technology/2014/nov/14/how-did-enigma-machine-work-imitation-game
+http://enigma.louisedade.co.uk/howitworks.html
+
 
 
 //    here is an idead for changing colour    
 //    https://stackoverflow.com/questions/40535444/how-to-use-onclick-with-divs-in-react-js
 
+here is some unused rotor data, for safe-keeping:
 
-
+alpha = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+one_c = ["D", "M", "T", "W", "S", "I", "L", "R", "U", "Y", "Q", "N", "K", "F", "E", "J", "C", "A", "Z", "B", "P", "G", "X", "O", "H", "V"]
+two_c = [ "H", "Q", "Z", "G", "P", "J", "T", "M", "O", "B", "L", "N", "C", "I", "F", "D", "Y", "A", "W", "V", "E", "U", "S", "R", "K", "X" ]
+three_c = ["B", "D", "F", "H", "J", "L", "C", "P", "R", "T", "X", "V", "Z", "N", "Y", "E", "I", "W", "G", "A", "K", "M", "U", "S", "Q", "O"]
 
 
 

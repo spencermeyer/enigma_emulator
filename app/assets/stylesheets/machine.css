@@ -2,6 +2,9 @@
   background-color: #404040;
   height: 70vw;
   width: 65vw;
+/*  border-right: 20vw;
+  border-left: 20vw;
+  border-color: #90531A;  not working*/
 }
 .display-board{
 /*  background-color: grey;*/
@@ -54,5 +57,11 @@
   border-width: 0.5vw;
   border-color: lightgrey;
   text-align: center;
+}
+.plug-board{
+  width: 65vw;
+  height: 20vw;
+  background-color: darkgrey;
+  margin-top: 45vw;
 }
 
