@@ -16,12 +16,12 @@ var Machine = React.createClass({
   },
   handleKeySelected(value) {
     var ajaxSuccess = this.ajaxSuccess;
-    console.log('machine level', value);
+    //console.log('machine level', value);
     $.ajax({
       url: "/encrypt_key",
       data: { input_key: value },
       success: function(data) { 
-        console.log('SUCCESS', data.letter);
+        // console.log('SUCCESS', data.letter);
         ajaxSuccess(data.letter);
       }
     });
@@ -70,25 +70,21 @@ var DisplayBoard = React.createClass({
 });
 
 var DisplayBoardLetter = React.createClass({
-  getInitialState() {
-    return { key_has_been_lit: false }
-  },
   render(){
-    const classNames = (this.props.key_to_light == this.props.letter && !this.state.key_has_been_lit) ? 'lamp-button lit' : 'lamp-button';
     return (
         <div className='lamp-board-letter'>
-          <button type="button" className={ classNames + " " + this.props.letter}>{ this.props.letter }</button>
+          <button type="button" className={ "lamp-button" + " " + this.props.letter}>{ this.props.letter }</button>
         </div>
       )
   },
   componentDidUpdate(prevProps, prevState) {
-    console.log('DisplayBoard letter component did update');
+    //console.log('DisplayBoard letter component did update');
     if(this.props.key_to_light == this.props.letter) { 
-      console.log('Im spartacus', this.props.letter);
+      //console.log('Im spartacus', this.props.letter);
+      $(`.lamp-button.${this.props.letter}`).addClass("lit");
       setTimeout(function(){
-        if(!this.state.key_has_been_lit) {
-          this.setState({key_has_been_lit: true});
-        }
+        $(`.lamp-button.${this.props.letter}`).removeClass("lit");
+        console.log("after setTimeout");
       }.bind(this), 950);
     }
   }
