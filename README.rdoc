@@ -5,6 +5,8 @@ It is a single page rails application using the react on rails gem to inject rea
 
 This is my ReactJS project in which I am writing an enigma machine emulator.  There is a ruby back-end for doing the code stuff, the font end sends it the selected key.
 
+I keep the information on the rotor position in the rails' session object.  This is ideal as you can reset it, and yet it still keeps it's memory on repeated controller visits, where a normal variable would be re-initiated each time.
+
 This part of the README documents what steps are necessary to get the
 application up and running.
 
@@ -13,8 +15,6 @@ Things you may want to cover:
 * Ruby version : 2.2.1p85
 
 * PostGres DB
-
-* 
 
 * Database creation
 

@@ -1,13 +1,13 @@
 var Machine = React.createClass({
   getInitialState() {
-    return { returned_key: '' }
+    return { returned_key: '', rotor1_value: 'A', rotor2_value: 'B', rotor3_value: 'C' }
   },
   render() {
     const boardLetters = ['Q','W','E','R','T','Z','U','I','O','A','S','D','F','G','H','J','K','P','Y','X','C','V','B','N','M','L'];
 
     return (
       <div className="machine">
-        <RotorAssembly letter="b" />
+        <RotorAssembly letter1={ this.state.rotor1_value } letter2 = { this.state.rotor2_value} letter3 = { this.state.rotor3_value } />
         <DisplayBoard letters={boardLetters} key_to_light = { this.state.returned_key } />
         <KeyBoard letters={boardLetters} onKeyPressed={ this.handleKeySelected }/>
         <PlugBoard />
@@ -21,14 +21,14 @@ var Machine = React.createClass({
       url: "/encrypt_key",
       data: { input_key: value },
       success: function(data) { 
-        // console.log('SUCCESS', data.letter);
-        ajaxSuccess(data.letter);
+        console.log('SUCCESS', data);
+        ajaxSuccess(data.letter, data.window1_letter);
       }
     });
   },
-  ajaxSuccess(key) {
-    console.log('OK new function', key);
-    this.setState({ returned_key: key });
+  ajaxSuccess(key, window1) {
+    console.log('OK in AJAX return function', key, window1 );
+    this.setState({ returned_key: key, rotor1_value: window1 });
   }
 })
 
@@ -36,9 +36,9 @@ class RotorAssembly extends React.Component {
   render() {
     return(
       <div className='rotor-assembly'>
-        <Rotor letter={"H"} />
-        <Rotor letter={"Z"} />
-        <Rotor letter={"P"} />
+        <Rotor letter={ this.props.letter1 } />
+        <Rotor letter={ this.props.letter2 } />
+        <Rotor letter={ this.props.letter3 } />
       </div>
       );
   }
@@ -84,7 +84,7 @@ var DisplayBoardLetter = React.createClass({
       $(`.lamp-button.${this.props.letter}`).addClass("lit");
       setTimeout(function(){
         $(`.lamp-button.${this.props.letter}`).removeClass("lit");
-        console.log("after setTimeout");
+         //console.log("after setTimeout");
       }.bind(this), 950);
     }
   }
