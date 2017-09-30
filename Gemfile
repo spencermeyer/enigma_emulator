@@ -14,7 +14,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 gem 'react-rails', github: 'reactjs/react-rails', branch: 'master'
 gem 'showdown-rails'
-
+gem 'rake', '~>11.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -37,6 +37,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'pry-rails'
+  gem 'rspec-rails'
 end
 
 group :development do

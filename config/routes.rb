@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#home'
-  get '/encrypt_key/', to: 'home#encrypt_key' 
+  get  '/encrypt_key/', to: 'home#encrypt_key' 
+  post '/encrypt_key/', to: 'home#encrypt_key' 
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

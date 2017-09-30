@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def encrypt_key
-
+    #binding.pry
+    Rails.logger.debug "********INPUT KEY #{params['input_key']}"
     one =   ["E", "K", "M", "F", "L", "G", "D", "Q", "V", "Z", "N", "T", "O", "W", "Y", "H", "X", "U", "S", "P", "A", "I", "B", "R", "C", "J"]
     two =   ["A", "J", "D", "K", "S", "I", "R", "U", "X", "B", "L", "H", "W", "T", "M", "C", "Q", "G", "Z", "N", "P", "Y", "F", "V", "O", "E"]
     three = ["J", "V", "I", "U", "B", "H", "T", "C", "D", "Y", "A", "K", "E", "Q", "Z", "P", "O", "S", "G", "X", "N", "R", "M", "W", "F", "L"]    
@@ -16,7 +17,6 @@ class HomeController < ApplicationController
     session[:num_key_presses_on_first_rotor] = session[:num_key_presses_on_first_rotor] ? 
                                     session[:num_key_presses_on_first_rotor] + 1 : 1 
     # this counts the key presses.  When it gets to 26 we have to rotate the next wheel.
-
     Rails.logger.debug "********INPUT KEY #{params['input_key']}"
     input_letter = params['input_key']
     letter_out_of_rotor_one           = session[:first_rotor][plain.index(input_letter)]
@@ -57,4 +57,8 @@ class HomeController < ApplicationController
     def rotate_wheel_one_place(input_array)
       Array(input_array.pop).concat input_array
     end
+
+    # def input_params
+    #   params.require(:letter_params).permit(:input_key)
+    # end
 end
