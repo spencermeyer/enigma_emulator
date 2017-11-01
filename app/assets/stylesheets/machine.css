@@ -1,13 +1,9 @@
-.machine{
+.machine {
   background-color: #404040;
   height: 70vw;
   width: 65vw;
-/*  border-right: 20vw;
-  border-left: 20vw;
-  border-color: #90531A;  not working*/
 }
-.display-board{
-/*  background-color: grey;*/
+.display-board {
   margin-bottom: 25vw;
 }
 .lamp-button, .key-button{
@@ -18,31 +14,34 @@
   border-radius: 3vw;
   margin-left: 1vw;
 }
-.lamp-button.A, .lamp-button.P{
+.lamp-button.A, .lamp-button.P {
   clear: left;
 }
-.lamp-button.A{
+.lamp-button.A {
   margin-left: 4vw;
 }
-.lamp-button.lit{
+.lamp-button.lit {
   background-color: white;
 }
-.keyboard{
+.keyboard {
   clear: left;
 }
-.key-button{
+.key-button {
   color: white;
 }
-.key-button.A, .key-button.P{
+.key-button.A, .key-button.P {
   clear: left;
 }
-.key-button.A{
+.key-button.A {
   margin-left: 4vw;
 }
-.rotor-assembly{
-  margin-left: 20vw;
+.rotor-assembly {
+  margin-left: 17vw;
   margin-bottom: 2vw;
   width: 50%;
+}
+.rotor {
+  display: inline-block;
 }
 .oval {
   width: 8vw;
@@ -52,7 +51,22 @@
   display: inline-block;
   margin-left: 1vw;
 }
-.rotor-letter{
+.finger-wheel {
+  width: 1vw;
+  height: 24vw;
+  display: inline-block;
+  background-color: darkgrey;
+  position: absolute;
+  background-image: linear-gradient(white 2px, transparent 2px);
+  background-size: 20px 20px, 20px 20px;;
+}
+.plug-board {
+  width: 65vw;
+  height: 20vw;
+  background-color: darkgrey;
+  margin-top: 45vw;
+}
+.rotor-letter {
   margin-left: auto;
   margin-right: auto;
   margin-top: 10vw;
@@ -61,10 +75,3 @@
   border-color: lightgrey;
   text-align: center;
 }
-.plug-board{
-  width: 65vw;
-  height: 20vw;
-  background-color: darkgrey;
-  margin-top: 45vw;
-}
-

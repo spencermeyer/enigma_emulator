@@ -47,8 +47,13 @@ class RotorAssembly extends React.Component {
 var Rotor = React.createClass({
   render() {
     return(
-      <div className="oval">
-        <p className="rotor-letter">{this.props.letter}</p>
+      <div className='rotor'>
+        <div className="oval">
+          <p className="rotor-letter">{this.props.letter}</p>
+        </div>
+        <div className='finger-wheel'>
+          <p></p>
+        </div>
       </div>
     );
   }  
