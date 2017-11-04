@@ -2,21 +2,24 @@ require 'spec_helper'
 require 'rails_helper'
 
 RSpec.describe HomeController do
-  describe "GET encrypt_key" do
-    skip 'too early to test the whole path' do
+  describe "GET encrypt_key and a key never maps to itself" do
+    #skip 'too early to test the whole path' do
       it "encrypts a key" do
-        test_input_key = 'X'
+        135.times do
+          test_input_key = 'A'
 
-        xhr :post, :encrypt_key, input_key: test_input_key, title: "First post", body: "This is the body"
+          xhr :post, :encrypt_key, input_key: test_input_key, title: "First post", body: "This is the body"
 
-        expect(response.code).to eq('200')
-        expect(response.body).to include('letter')
+          expect(response.code).to eq('200')
+          expect(response.body).to include('letter')
 
-        parsed_response=JSON.parse(response.body)
+          parsed_response=JSON.parse(response.body)
 
-        expect(parsed_response['letter']).to eq('V')
+          #puts "letter is #{parsed_response['letter']}, rotor is #{parsed_response['rotor']}, number is #{ parsed_response['number'] }"
+          expect(parsed_response['letter']).not_to eq(test_input_key)
+        end
       end
-    end
+    #end
   end
   describe 'Some rotor checks' do
     it 'correctly assigns each route the first time through' do
@@ -37,7 +40,7 @@ RSpec.describe HomeController do
   describe 'Reflector check' do
     it 'tests all the routes through the reflector' do
       plain = HomeController::PLAIN
-      ref_b = HomeController::ref_b
+      ref_b = HomeController::REF_B
 
       plain.each do |letter|
         out_letter         = ref_b[plain.index(letter)]

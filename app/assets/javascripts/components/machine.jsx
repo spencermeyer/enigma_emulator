@@ -11,6 +11,7 @@ var Machine = React.createClass({
         <DisplayBoard letters={boardLetters} key_to_light = { this.state.returned_key } />
         <KeyBoard letters={boardLetters} onKeyPressed={ this.handleKeySelected }/>
         <PlugBoard />
+        <ResetButton />
       </div>
     )   
   },
@@ -117,7 +118,7 @@ var KeyBoardButton = React.createClass({
     var that=this;
     return (
         <div className="key-board-letter">
-          <button type="button" value={this.state.letter} onClick={this.props.onSomeEvent } className={"key-button" + " " + this.props.letter} >{ this.props.letter }</button>
+          <button type="button" value={this.state.letter} onClick={this.props.onSomeEvent} className={"key-button" + " " + this.props.letter} >{ this.props.letter }</button>
         </div>
     )
   }
@@ -131,3 +132,29 @@ var PlugBoard = React.createClass({
         )
     }
 });
+
+var ResetButton = React.createClass({
+    render() {
+      return(
+        <div className="reset_button">
+          <button type="button"  onClick={this.props.reset}>Reset</button>
+        </div>
+        )
+    },
+    reset() {
+        $.ajax({
+          url: "/encrypt_key",
+          data: { reset: true },
+          success: function(data) { 
+            console.log('RESETTING');
+            ajaxSuccess(data.letter, data.window1_letter);
+          }
+        });
+      },
+      ajaxSuccess(key, window1) {
+        console.log('RESETTING', key, window1 );
+        this.setState({ returned_key: 'A', rotor1_value: window1 });
+      }
+});
+
+
