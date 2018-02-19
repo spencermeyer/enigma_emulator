@@ -8,6 +8,10 @@ class HomeController < ApplicationController
     PLAIN = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"].freeze
   
   def encrypt_key
+    # if params[:reset] = true                strange things happended here.
+    #   reset_session
+    # end
+
     Rails.logger.debug "********INPUT KEY #{params['input_key']}"
     session[:first_rotor]  ||= ONE.dup
     session[:second_rotor] ||= TWO.dup

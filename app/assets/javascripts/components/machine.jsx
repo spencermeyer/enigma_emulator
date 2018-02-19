@@ -1,6 +1,6 @@
 var Machine = React.createClass({
   getInitialState() {
-    return { returned_key: '', rotor1_value: 'A', rotor2_value: 'B', rotor3_value: 'C' }
+    return { returned_key: '', rotor1_value: 'A', rotor2_value: 'B', rotor3_value: 'C', history: '' }
   },
   render() {
     const boardLetters = ['Q','W','E','R','T','Z','U','I','O','A','S','D','F','G','H','J','K','P','Y','X','C','V','B','N','M','L'];
@@ -8,16 +8,19 @@ var Machine = React.createClass({
     return (
       <div className="machine">
         <RotorAssembly letter1={ this.state.rotor1_value } letter2 = { this.state.rotor2_value} letter3 = { this.state.rotor3_value } />
+        <Switch />
         <DisplayBoard letters={boardLetters} key_to_light = { this.state.returned_key } />
         <KeyBoard letters={boardLetters} onKeyPressed={ this.handleKeySelected }/>
         <PlugBoard />
         <ResetButton />
+        <TextHistoryArea history = { history } />
+        <TextEntyArea />
       </div>
     )   
   },
   handleKeySelected(value) {
     var ajaxSuccess = this.ajaxSuccess;
-    //console.log('machine level', value);
+    console.log('machine level', value);
     $.ajax({
       url: "/encrypt_key",
       data: { input_key: value },
@@ -29,7 +32,8 @@ var Machine = React.createClass({
   },
   ajaxSuccess(key, window1) {
     console.log('OK in AJAX return function', key, window1 );
-    this.setState({ returned_key: key, rotor1_value: window1 });
+    var newHistory = this.state.history.concat(key);
+    this.setState({ returned_key: key, rotor1_value: window1, history: newHistory });
   }
 })
 
@@ -60,6 +64,16 @@ var Rotor = React.createClass({
   }  
 });
 
+var Switch = React.createClass({
+  render() {
+    return(
+      <div className='switch'>
+        <div className='switch-mask'></div>
+      </div>
+    );
+  }  
+});
+
 var DisplayBoard = React.createClass({
   getInitialState() {
     return { key_to_light: '' }
@@ -84,9 +98,9 @@ var DisplayBoardLetter = React.createClass({
       )
   },
   componentDidUpdate(prevProps, prevState) {
-    //console.log('DisplayBoard letter component did update');
+    console.log('DisplayBoard letter component did update');
     if(this.props.key_to_light == this.props.letter) { 
-      //console.log('Im spartacus', this.props.letter);
+      console.log('Im spartacus', this.props.letter);
       $(`.lamp-button.${this.props.letter}`).addClass("lit");
       setTimeout(function(){
         $(`.lamp-button.${this.props.letter}`).removeClass("lit");
@@ -137,11 +151,12 @@ var ResetButton = React.createClass({
     render() {
       return(
         <div className="reset_button">
-          <button type="button"  onClick={this.props.reset}>Reset</button>
+          <button type="button"  onClick={this.reset}>Reset</button>
         </div>
         )
     },
     reset() {
+        console.log('RESET PRESSED');
         $.ajax({
           url: "/encrypt_key",
           data: { reset: true },
@@ -155,6 +170,31 @@ var ResetButton = React.createClass({
         console.log('RESETTING', key, window1 );
         this.setState({ returned_key: 'A', rotor1_value: window1 });
       }
+});
+
+var TextHistoryArea = React.createClass({
+  render() {
+    return(
+      <div className="text-history">
+        <textarea rows='3' cols='70'>History of keys</textarea>
+      </div>
+      )
+  }
+});
+
+var TextEntyArea = React.createClass({
+    render() {
+      return(
+        <div className="text-entry">
+          <form action = "/encrypt_key">
+            <input type="text" className="manual-entry"></input>
+          </form>
+        </div>
+        )
+    },
+    doEncryptTheText() {
+      console.log('do encrypt the text');
+    }
 });
 
 

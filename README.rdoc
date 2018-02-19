@@ -50,12 +50,7 @@ http://enigma.louisedade.co.uk/howitworks.html
 //    here is an idead for changing colour    
 //    https://stackoverflow.com/questions/40535444/how-to-use-onclick-with-divs-in-react-js
 
-here is some unused rotor data, for safe-keeping:
 
-alpha = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
-one_c = ["D", "M", "T", "W", "S", "I", "L", "R", "U", "Y", "Q", "N", "K", "F", "E", "J", "C", "A", "Z", "B", "P", "G", "X", "O", "H", "V"]
-two_c = [ "H", "Q", "Z", "G", "P", "J", "T", "M", "O", "B", "L", "N", "C", "I", "F", "D", "Y", "A", "W", "V", "E", "U", "S", "R", "K", "X" ]
-three_c = ["B", "D", "F", "H", "J", "L", "C", "P", "R", "T", "X", "V", "Z", "N", "Y", "E", "I", "W", "G", "A", "K", "M", "U", "S", "Q", "O"]
 
 
 

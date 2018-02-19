@@ -1,7 +1,12 @@
+body{
+  background-color: #e6e6e6;
+}
+
 .machine {
   background-color: #404040;
   height: 70vw;
   width: 65vw;
+  border: 2vw solid #a46f44;
 }
 .display-board {
   margin-bottom: 25vw;
@@ -13,6 +18,7 @@
   height: 6vw;
   border-radius: 3vw;
   margin-left: 1vw;
+  background-color: #b3b3b3;
 }
 .lamp-button.A, .lamp-button.P {
   clear: left;
@@ -27,7 +33,7 @@
   clear: left;
 }
 .key-button {
-  color: white;
+  color: grey;
 }
 .key-button.A, .key-button.P {
   clear: left;
@@ -39,6 +45,7 @@
   margin-left: 17vw;
   margin-bottom: 2vw;
   width: 50%;
+  display: inline-block;
 }
 .rotor {
   display: inline-block;
@@ -64,7 +71,9 @@
   width: 65vw;
   height: 20vw;
   background-color: darkgrey;
-  margin-top: 45vw;
+  margin-top: 48vw;
+  margin-left: -2vw;
+  border: 2vw solid #a46f44;
 }
 .rotor-letter {
   margin-left: auto;
@@ -74,4 +83,24 @@
   border-width: 0.5vw;
   border-color: lightgrey;
   text-align: center;
+}
+.manual-entry{
+  height: 10vw;
+  width: 64vw;
+}
+.switch{
+  width: 10vw;
+  height: 5vw;
+  border-radius: 5vw 5vw 0vw 0vw;
+  background-color: #e6e6e6;
+  display: inline-block;
+}
+.switch-mask{
+  width: 6vw;
+  height: 3vw;
+  border-radius: 3vw 3vw 0vw 0vw;
+  background-color: black;
+  margin-left: 2vw;
+  position: relative;
+  top: 2vw;
 }
