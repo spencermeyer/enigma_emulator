@@ -13,7 +13,7 @@ var Machine = React.createClass({
         <KeyBoard letters={boardLetters} onKeyPressed={ this.handleKeySelected }/>
         <PlugBoard />
         <ResetButton />
-        <TextHistoryArea history = { history } />
+        <TextHistoryArea history = { this.state.history } />
         <TextEntyArea />
       </div>
     )   

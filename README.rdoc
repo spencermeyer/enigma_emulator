@@ -10,21 +10,10 @@ I keep the information on the rotor position in the rails' session object.  This
 This part of the README documents what steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
-
+The application runs:
 * Ruby version : 2.2.1p85
-
 * PostGres DB
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+* There are tests in rspec, so to run tests:  `bundle exec rspec spec`
 
 Using this react js:
 --------------------
@@ -44,8 +33,6 @@ http://www.dcode.fr/enigma-machine-cipher#0
 https://en.wikipedia.org/wiki/Enigma_rotor_details
 https://www.theguardian.com/technology/2014/nov/14/how-did-enigma-machine-work-imitation-game
 http://enigma.louisedade.co.uk/howitworks.html
-
-
 
 //    here is an idead for changing colour    
 //    https://stackoverflow.com/questions/40535444/how-to-use-onclick-with-divs-in-react-js
