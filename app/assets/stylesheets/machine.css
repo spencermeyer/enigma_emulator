@@ -18,7 +18,11 @@ body{
   height: 6vw;
   border-radius: 3vw;
   margin-left: 1vw;
-  background-color: #b3b3b3;
+  background-color: silver;
+  /*border: solid silver;*/
+  border-style: inset;
+  border-color: silver;
+  border-width: 2px;
 }
 .lamp-button.A, .lamp-button.P {
   clear: left;
@@ -34,6 +38,7 @@ body{
 }
 .key-button {
   color: grey;
+  border-style: solid silver;
 }
 .key-button.A, .key-button.P {
   clear: left;
@@ -41,6 +46,7 @@ body{
 .key-button.A {
   margin-left: 4vw;
 }
+
 .rotor-assembly {
   margin-left: 17vw;
   margin-bottom: 2vw;
@@ -74,6 +80,7 @@ body{
   margin-top: 48vw;
   margin-left: -2vw;
   border: 2vw solid #a46f44;
+  display: none;  /* temporary  */
 }
 .rotor-letter {
   margin-left: auto;
@@ -104,3 +111,7 @@ body{
   position: relative;
   top: 2vw;
 }
+
+.text-history, .manual-entry {
+  display: none;    /* temporary */
+}  
