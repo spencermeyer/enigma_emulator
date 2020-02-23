@@ -1,0 +1,33 @@
+version: "2.2"
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    stdin_open: true
+    tty: true
+    depends_on:
+      db:
+        condition: service_started
+    ports:
+      - "80:80"
+      - "8080:8080"
+      - "3000:3000"
+    environment:
+      DATABASE_HOST: 172.17.0.1
+      DATABASE_PORT: 5432
+      DATABASE_PASSWORD: password
+      DATABASE_USER: postgres
+      SECRET_KEY_BASE: foobar
+    # volumes:
+    #   - ".:/app"
+  db:
+    image: postgres:9.6.17-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGGRES_USER: postgres      
+
+# accessible at
+# docker.localhost:3000
+
