@@ -7,12 +7,10 @@ services:
       dockerfile: Dockerfile.dev
     stdin_open: true
     tty: true
-    depends_on:
-      db:
-        condition: service_started
+    # depends_on:
+      # db:
+        # condition: service_started
     ports:
-      - "80:80"
-      - "8080:8080"
       - "3000:3000"
     environment:
       DATABASE_HOST: 172.17.0.1
@@ -23,15 +21,13 @@ services:
     working_dir: /app
     volumes:
       - .:/app
-    # volumes:
-    #   - ".:/app"
   db:
     image: postgres:9.6.17-alpine
     restart: always
     environment:
       POSTGRES_PASSWORD: password
       POSTGGRES_USER: postgres      
+      # use volume at some stage      
 
 # accessible at
 # docker.localhost:3000
-
