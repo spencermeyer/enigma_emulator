@@ -24,8 +24,10 @@ default: &default
 development:
   <<: *default
   database: enigma_development
-  username: pguser
-  password:
+  username: <%= ENV['DATABASE_USER']%>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  host:     db
+  port:     <%= ENV['DATABASE_PORT']%>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.

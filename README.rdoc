@@ -39,6 +39,17 @@ http://enigma.louisedade.co.uk/howitworks.html
 
 
 
+To Do
+-----
+Make the docker container use a database in a shared volume.
+Maybe like this: https://stackoverflow.com/questions/42196409/docker-rails-app-cannot-connect-to-linked-postgres-container-doesnt-seem-to
+
+Finish config of test environment database
+
+get one button press to clear the timout on the previous for fast button presses.
+
+
+
 
 
 

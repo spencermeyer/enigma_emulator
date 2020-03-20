@@ -1,12 +1,21 @@
 body{
-  background-color: #e6e6e6;
+  background-color: grey;
+  font-family: monospace;
 }
-
+.case {
+  background-image: url(wood-pattern.png);
+  background-size: cover;
+  height: 72vw;
+  width: 67vw;
+  margin: auto;
+}
 .machine {
-  background-color: #404040;
+  background-color: black;
   height: 70vw;
   width: 65vw;
-  border: 2vw solid #a46f44;
+  margin: auto;
+  position: relative;
+  top: 1vw;
 }
 .display-board {
   margin-bottom: 25vw;
@@ -18,11 +27,14 @@ body{
   height: 6vw;
   border-radius: 3vw;
   margin-left: 1vw;
-  background-color: silver;
-  /*border: solid silver;*/
+  background-color: #333333;
+  color: silver;
   border-style: inset;
   border-color: silver;
   border-width: 2px;
+  font-weight: 800;
+  font-size: larger;
+  text-shadow: 2px 7px 8px #FFFFFF;
 }
 .lamp-button.A, .lamp-button.P {
   clear: left;
@@ -37,9 +49,12 @@ body{
   clear: left;
 }
 .key-button {
-  color: grey;
-  border-style: solid silver;
+  color: white;
+  background-color: #333333;
+  border-style: solid;
+  border-color: silver;
 }
+
 .key-button.A, .key-button.P {
   clear: left;
 }

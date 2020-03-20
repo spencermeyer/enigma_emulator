@@ -43,6 +43,7 @@ group :development, :test do
   gem 'byebug'
   gem 'pry-rails'
   gem 'rspec-rails'
+  gem 'listen'
 end
 
 group :development do

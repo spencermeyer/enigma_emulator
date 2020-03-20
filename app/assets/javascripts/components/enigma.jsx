@@ -1,3 +1,26 @@
+class Enigma extends React.Component {
+	constuctor(props) {
+	}
+	render() {
+		return (
+			<div className="enigma">
+				<Case/>	
+				<ResetButton/>
+			</div>)
+	}
+}
+
+class Case extends React.Component {
+	render() {
+		return (
+			<div className='case'>
+				<Machine/>
+			</div>
+			)
+	}
+}
+
+
 class Machine extends React.Component {
   constructor(props) {
     super(props);
@@ -15,7 +38,6 @@ class Machine extends React.Component {
         <DisplayBoard letters={boardLetters} key_to_light = { this.state.returned_key } />
         <KeyBoard letters={boardLetters} onKeyPressed={ this.handleKeySelected.bind(this) }/>
         <PlugBoard />
-        <ResetButton />
         <TextHistoryArea history = { this.state.history } />
         <TextEntyArea />
       </div>
@@ -204,3 +226,4 @@ class TextEntyArea extends React.Component {
       console.log('do encrypt the text');
     }
 }
+
