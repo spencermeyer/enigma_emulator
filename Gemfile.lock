@@ -127,7 +127,7 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.19.0, < 2.0)
-    rake (11.0.1)
+    rake (12.3.3)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -213,7 +213,7 @@ DEPENDENCIES
   pg (~> 0.15)
   pry-rails
   rails (= 5.2.4)
-  rake (~> 11.0.0)
+  rake (~> 12.3.3)
   react-rails (~> 2.4.4)
   rspec-rails
   sass-rails (~> 5.0)
