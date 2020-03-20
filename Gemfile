@@ -16,7 +16,7 @@ gem 'coffee-rails', '~> 4.2.2'
 #gem 'react-rails', github: 'reactjs/react-rails', branch: 'master'
 gem 'react-rails', '~> 2.4.4'
 gem 'showdown-rails'
-gem 'rake', '~>11.0.0'
+gem 'rake', '~>12.3.3'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
