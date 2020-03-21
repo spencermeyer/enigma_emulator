@@ -5,7 +5,6 @@ class Enigma extends React.Component {
 		return (
 			<div className="enigma">
 				<Case/>	
-				<ResetButton/>
 			</div>)
 	}
 }
@@ -38,6 +37,7 @@ class Machine extends React.Component {
         <DisplayBoard letters={boardLetters} key_to_light = { this.state.returned_key } />
         <KeyBoard letters={boardLetters} onKeyPressed={ this.handleKeySelected.bind(this) }/>
         <PlugBoard />
+        <ResetButton/>
         <TextHistoryArea history = { this.state.history } />
         <TextEntyArea />
       </div>
@@ -69,9 +69,9 @@ class RotorAssembly extends React.Component {
   render() {
     return(
       <div className='rotor-assembly'>
-        <Rotor letter={ this.props.letter1 } />
-        <Rotor letter={ this.props.letter2 } />
         <Rotor letter={ this.props.letter3 } />
+        <Rotor letter={ this.props.letter2 } />
+        <Rotor letter={ this.props.letter1 } />
       </div>
       );
   }
@@ -105,14 +105,15 @@ class Switch extends React.Component {
 class DisplayBoard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { key_to_light: '' }
+    this.state = { key_to_light: '', last_key: '' }
   }
 
   render() {
     return(
         <div className="display-board">
           { this.props.letters.map(function(individualLetter, index){
-            return <DisplayBoardLetter key={index} letter={individualLetter} key_to_light={this.props.key_to_light} />
+            return <DisplayBoardLetter key={index} letter={individualLetter} 
+            key_to_light={this.props.key_to_light} />
           }, this)}
         </div>
       );
@@ -123,7 +124,8 @@ class DisplayBoardLetter extends React.Component {
   render(){
     return (
         <div className='lamp-board-letter'>
-          <button type="button" className={ "lamp-button" + " " + this.props.letter}>{ this.props.letter }</button>
+          <button type="button" className={ "lamp-button" + " " + this.props.letter}>{ this.props.letter }
+          </button>
         </div>
       )
   }
@@ -131,6 +133,7 @@ class DisplayBoardLetter extends React.Component {
     console.log('DisplayBoard letter component did update');
     if(this.props.key_to_light == this.props.letter) { 
       console.log('Im spartacus', this.props.letter);
+      $(".lamp-button.lit").removeClass('lit');
       $(`.lamp-button.${this.props.letter}`).addClass("lit");
       setTimeout(function(){
         $(`.lamp-button.${this.props.letter}`).removeClass("lit");
@@ -180,7 +183,7 @@ class PlugBoard extends React.Component {
 class ResetButton extends React.Component {
     render() {
       return(
-        <div className="reset_button">
+        <div className="reset-button">
           <button type="button"  onClick={this.reset}>Reset</button>
         </div>
         )
@@ -206,7 +209,7 @@ class TextHistoryArea extends React.Component {
   render() {
     return(
       <div className="text-history">
-        <textarea rows='3' cols='70'>History of keys</textarea>
+        <p>History of keys</p>
       </div>
       )
   }

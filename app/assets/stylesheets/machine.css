@@ -54,14 +54,12 @@ body{
   border-style: solid;
   border-color: silver;
 }
-
 .key-button.A, .key-button.P {
   clear: left;
 }
 .key-button.A {
   margin-left: 4vw;
 }
-
 .rotor-assembly {
   margin-left: 17vw;
   margin-bottom: 2vw;
@@ -89,13 +87,12 @@ body{
   background-size: 20px 20px, 20px 20px;;
 }
 .plug-board {
-  width: 65vw;
+  width: 63vw;
   height: 20vw;
   background-color: darkgrey;
-  margin-top: 48vw;
-  margin-left: -2vw;
+  margin-top: 21vw;
+  margin-left: -1vw;
   border: 2vw solid #a46f44;
-  display: none;  /* temporary  */
 }
 .rotor-letter {
   margin-left: auto;
@@ -105,6 +102,9 @@ body{
   border-width: 0.5vw;
   border-color: lightgrey;
   text-align: center;
+  font-weight: 800;
+  font-size: larger;
+  text-shadow: 2px 7px 8px #FFFFFF;
 }
 .manual-entry{
   height: 10vw;
@@ -128,5 +128,13 @@ body{
 }
 
 .text-history, .manual-entry {
-  display: none;    /* temporary */
-}  
+  background-color: #fffdd0;
+  display: flex;
+  height: 10vw;
+  width: 65vw;
+  margin: auto;
+  margin-top:  10px;
+}
+.reset-button {
+
+}
