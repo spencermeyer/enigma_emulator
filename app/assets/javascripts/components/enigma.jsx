@@ -23,7 +23,7 @@ class Case extends React.Component {
 class Machine extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { returned_key: '', rotor1_value: 'A', rotor2_value: 'B', rotor3_value: 'C', history: '' };
+    this.state = { returned_key: '', rotor1_value: 'A', rotor2_value: 'B', rotor3_value: 'C', history: '', encrypted_history: '' };
     this.ajaxSuccess = this.ajaxSuccess.bind(this);
   }
 
@@ -38,13 +38,14 @@ class Machine extends React.Component {
         <KeyBoard letters={boardLetters} onKeyPressed={ this.handleKeySelected.bind(this) }/>
         <PlugBoard />
         <ResetButton/>
-        <TextHistoryArea history = { this.state.history } />
-        <TextEntyArea />
+        <TextHistoryArea history = { this.state.encrypted_history } />
+        <TextEntyArea history = {this.state.history }/>
       </div>
     )   
   }
 
   handleKeySelected(value) {
+  	this.state.history = this.state.history.concat(value);
     console.log('handling key selected at Machine Level');
     var ajaxSuccess = this.ajaxSuccess;
     console.log('machine level', value);
@@ -59,9 +60,9 @@ class Machine extends React.Component {
   }
   ajaxSuccess(key, window1) {
     console.log('OK in AJAX return function', key, window1 );
-    //var newHistory = this.state.history.concat(key);
-    // this.setState({ returned_key: key, rotor1_value: window1, history: newHistory });
-    this.setState({ returned_key: key, rotor1_value: window1 });
+    var newEncryptedHistory = this.state.encrypted_history.concat(key);
+    this.setState({ returned_key: key, rotor1_value: window1, encrypted_history: newEncryptedHistory });
+    // this does not work quickly enough , it is one key behind.
   }
 }
 
@@ -209,7 +210,7 @@ class TextHistoryArea extends React.Component {
   render() {
     return(
       <div className="text-history">
-        <p>History of keys</p>
+        <p>{ this.props.history }</p>
       </div>
       )
   }
@@ -219,14 +220,9 @@ class TextEntyArea extends React.Component {
     render() {
       return(
         <div className="text-entry">
-          <form action = "/encrypt_key">
-            <input type="text" className="manual-entry"></input>
-          </form>
+        	<p>{ this.props.history }</p>
         </div>
         )
-    }
-    doEncryptTheText() {
-      console.log('do encrypt the text');
     }
 }
 

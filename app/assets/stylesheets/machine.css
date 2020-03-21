@@ -88,7 +88,7 @@ body{
 }
 .plug-board {
   width: 63vw;
-  height: 20vw;
+  height: 10vw;
   background-color: darkgrey;
   margin-top: 21vw;
   margin-left: -1vw;
@@ -127,7 +127,7 @@ body{
   top: 2vw;
 }
 
-.text-history, .manual-entry {
+.text-history, .text-entry {
   background-color: #fffdd0;
   display: flex;
   height: 10vw;
